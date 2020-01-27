@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         label.text = "1234"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.backgroundColor = .red
         return label
     }()
     
