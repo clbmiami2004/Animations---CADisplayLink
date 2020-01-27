@@ -33,20 +33,43 @@ class ViewController: UIViewController {
     }
     
     //Starting the count from 0.
-    var startValue = 0
-    let endValue = 12000
+    var startValue: Double = 0
+    let endValue: Double = 3000
+    let animationDuration: Double = 3.5
+    
+    //Setting up the speed in which the app reaches the endValue:
+    let animationStartDate = Date()
+    
 
     @objc func handleUpdate() {
 //        let seconds = Date().timeIntervalSince1970
 //        print(seconds)
 //        self.countingLabel.text = "\(seconds)"
         
-        self.countingLabel.text = "\(startValue)"
-        startValue += 1
+//        self.countingLabel.text = "\(startValue)"
+//        startValue += 1
+//
+//        if startValue > endValue {
+//            startValue = endValue
+//        }
         
-        if startValue > endValue {
-            startValue = endValue
+        
+        let now = Date()
+        let elapsedTime = now.timeIntervalSince(animationStartDate)
+        
+        if elapsedTime > animationDuration {
+            self.countingLabel.text = "\(endValue)"
+            
+        }else {
+            
+            let percentage = elapsedTime / animationDuration
+            let value = startValue + percentage * (endValue - startValue)
+            self.countingLabel.text = "\(value)"
         }
+        
+        
+        
+        
     }
 
 }
